@@ -1,3 +1,4 @@
+# checks if word is a palindrome. returns true or false
 def is_palindrome(text):
     if len(text) == 0 or len(text) == 1:
         return False
