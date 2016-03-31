@@ -1,32 +1,31 @@
 import re
-# checks if word is a palindrome. returns true or false
+
 def remove_special_character(text):
-    # user_input = input ("enter some words to check if its a palindrome: ")
     clean_text = re.sub("[^A-Za-z]+", "", text)
     clean_text = clean_text.lower()
     return clean_text
 
 def is_palindrome(text):
-    if len(text) == 0 or len(text) == 1:
+    clean_text = remove_special_character(text)
+
+    if len(clean_text) == 0 or len(clean_text) == 1:
         return False
-    elif len(text) < 4:
-        if text[0] == text[-1]:
+    elif len(clean_text) < 4:
+        if clean_text[0] == clean_text[-1]:
             return True
         else:
             return False
     else:
-        if text[0] == text[-1]:
-            return is_palindrome(text[1:-1])
+        if clean_text[0] == clean_text[-1]:
+            return is_palindrome(clean_text[1:-1])
         return False
 
 def main():
-    user_input = input("enter some words to check if its a palindrome: ")
-    clean_text = remove_special_character(user_input)
-    print(clean_text)
-    if is_palindrome(clean_text):
-        print ("palindrome is true")
+    user_input = input("Check if your word is a palindrome!: ")
+    if is_palindrome(user_input):
+        print ("Your word is a palindrome!")
     else:
-        print ("palindrome is false")
+        print ("Your word is not a palindrome :(")
 
 if __name__ == '__main__':
     main()
